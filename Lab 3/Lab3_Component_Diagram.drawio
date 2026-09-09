@@ -1,0 +1,130 @@
+<mxfile host="app.diagrams.net" agent="Claude">
+  <diagram name="Lab3-Component-Diagram" id="lab3comp01">
+    <mxGraphModel dx="1062" dy="424" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;fontSize=18;fontStyle=1;align=center;" value="Hospital Bed &amp; ICU Allocation Dashboard - Layered Architecture (Component Diagram)" vertex="1">
+          <mxGeometry height="30" width="820" x="280" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="layerPres" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=13;" value="Presentation Layer" vertex="1">
+          <mxGeometry height="140" width="260" x="440" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="compUI" parent="1" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#ffffff;strokeColor=#000000;" value="&lt;&lt;component&gt;&gt;&#xa;Dashboard UI Component" vertex="1">
+          <mxGeometry height="70" width="180" x="480" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="layerBiz" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=13;" value="Business Layer" vertex="1">
+          <mxGeometry height="248" width="1090" x="140" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="compTriage" parent="1" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#ffffff;strokeColor=#000000;" value="&lt;&lt;component&gt;&gt;&#xa;Triage &amp; Bed Allocation Manager" vertex="1">
+          <mxGeometry height="80" width="200" x="170" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="compICU" parent="1" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#ffffff;strokeColor=#000000;" value="&lt;&lt;component&gt;&gt;&#xa;ICU Transfer Coordinator" vertex="1">
+          <mxGeometry height="80" width="200" x="450" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="compAmb" parent="1" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#ffffff;strokeColor=#000000;" value="&lt;&lt;component&gt;&gt;&#xa;Ambulance Transfer Service" vertex="1">
+          <mxGeometry height="80" width="200" x="800" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="layerData" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=13;" value="Data Layer" vertex="1">
+          <mxGeometry height="140" width="260" x="480" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="compDB" parent="1" style="shape=component;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#ffffff;strokeColor=#000000;" value="&lt;&lt;component&gt;&gt;&#xa;Hospital Database Component" vertex="1">
+          <mxGeometry height="70" width="200" x="500" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="actorAmbExt" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;html=1;outlineConnect=0;" value="Inter-facility&#xa;Ambulance Service" vertex="1">
+          <mxGeometry height="60" width="30" x="1150" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="ifOrder" parent="1" style="ellipse;whiteSpace=wrap;html=1;resizable=0;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" value="Allocation Interface" vertex="1">
+          <mxGeometry height="16" width="16" x="405" y="225" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeUI_ball" edge="1" parent="1" source="compUI" style="endArrow=none;html=1;" target="ifOrder">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeTriage_socket" edge="1" parent="1" source="ifOrder" style="endArrow=block;endFill=0;html=1;" target="compTriage">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ifICUStatus" parent="1" style="ellipse;whiteSpace=wrap;html=1;resizable=0;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" value="ICU Status Interface" vertex="1">
+          <mxGeometry height="16" width="16" x="600" y="225" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeUI_ICU_ball" edge="1" parent="1" source="compUI" style="endArrow=none;html=1;" target="ifICUStatus">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeICU_socket" edge="1" parent="1" source="ifICUStatus" style="endArrow=block;endFill=0;html=1;" target="compICU">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeTriage_use_ICU" edge="1" parent="1" source="compTriage" style="endArrow=open;dashed=1;html=1;fontSize=10;" target="compICU" value="&lt;&lt;use&gt;&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="370" y="360" />
+              <mxPoint x="450" y="360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ifTransferReq" parent="1" style="ellipse;whiteSpace=wrap;html=1;resizable=0;fillColor=#ffffff;strokeColor=#000000;fontSize=9;" value="Transfer&lt;div&gt;Request&lt;/div&gt;&lt;div&gt;Interface&lt;/div&gt;" vertex="1">
+          <mxGeometry height="16" width="16" x="685" y="352" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeICU_ball" edge="1" parent="1" source="compICU" style="endArrow=none;html=1;" target="ifTransferReq">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeAmb_socket" edge="1" parent="1" source="ifTransferReq" style="endArrow=block;endFill=0;html=1;" target="compAmb">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ifDispatch" parent="1" style="ellipse;whiteSpace=wrap;html=1;resizable=0;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" value="Dispatch&amp;nbsp;&amp;nbsp;&lt;div&gt;Interface&lt;/div&gt;" vertex="1">
+          <mxGeometry height="16" width="16" x="1067" y="352" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeAmb_ball2" edge="1" parent="1" source="compAmb" style="endArrow=none;html=1;" target="ifDispatch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeActor_socket" edge="1" parent="1" source="ifDispatch" style="endArrow=block;endFill=0;html=1;" target="actorAmbExt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ifDBQuery" parent="1" style="ellipse;whiteSpace=wrap;html=1;resizable=0;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" value="Persistence Interface" vertex="1">
+          <mxGeometry height="16" width="16" x="480" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeDB_ball" edge="1" parent="1" source="compDB" style="endArrow=none;html=1;" target="ifDBQuery">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edgeTriage_use_DB" edge="1" parent="1" source="compTriage" style="endArrow=open;dashed=1;html=1;fontSize=10;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="ifDBQuery" value="&lt;&lt;use&gt;&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="270" y="480" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edgeICU_use_DB" edge="1" parent="1" source="compICU" style="endArrow=open;dashed=1;html=1;fontSize=10;exitX=0.5;exitY=1;entryX=0.6;entryY=0;" target="compDB" value="&lt;&lt;use&gt;&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="550" y="500" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edgeAmb_use_DB" edge="1" parent="1" source="compAmb" style="endArrow=open;dashed=1;html=1;fontSize=10;" target="compDB" value="&lt;&lt;use&gt;&gt;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="830" y="470" />
+              <mxPoint x="700" y="530" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legendBox" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fillColor=#f5f5f5;strokeColor=#666666;" value="Legend" vertex="1">
+          <mxGeometry height="150" width="380" x="960" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="legendCircle" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" value="" vertex="1">
+          <mxGeometry height="14" width="14" x="975" y="95" as="geometry" />
+        </mxCell>
+        <mxCell id="legendCircleTxt" parent="1" style="text;html=1;fontSize=11;align=left;" value="Provided Interface (ball) - service the component offers" vertex="1">
+          <mxGeometry height="24" width="330" x="1000" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="legendSocketTxt" parent="1" style="text;html=1;fontSize=11;align=left;" value="Required Interface (socket) - shown via arrow into component" vertex="1">
+          <mxGeometry height="24" width="340" x="1000" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="legendUseTxt" parent="1" style="text;html=1;fontSize=11;align=left;" value="&lt;&lt;use&gt;&gt; dashed arrow = usage dependency" vertex="1">
+          <mxGeometry height="24" width="340" x="975" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="legendLayerTxt" parent="1" style="text;html=1;fontSize=11;align=left;" value="Colored boxes = architectural layers" vertex="1">
+          <mxGeometry height="24" width="340" x="975" y="165" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
